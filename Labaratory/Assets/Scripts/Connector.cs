@@ -18,8 +18,17 @@ public class Connector : MonoBehaviour
     private void OnCollisionStay(Collision collision)
     {
         print("Log");
-        var obj = collision.gameObject.transform.GetChild(0);
+        var obj = collision.gameObject;
 
-        transform.position = obj.position;
+        obj.GetComponent<Renderer>().material.color = Color.green;
+        transform.position = obj.transform.GetChild(0).position;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        print("Log");
+        var obj = collision.gameObject;
+
+        obj.GetComponent<Renderer>().material.color = Color.red;
     }
 }
