@@ -90,7 +90,7 @@ public class RotateButton : MonoBehaviour
     }
 
     void OnMouseDown()
-    {
+    { 
         _rotate = true;
     }
 }
