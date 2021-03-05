@@ -17,12 +17,12 @@ public class LogicScript : MonoBehaviour
     public Text Mode;
     public Text Status;
 
+
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         

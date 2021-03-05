@@ -10,7 +10,6 @@ public class Slidewire : MonoBehaviour
     public GameObject ArrowHold;
     public GameObject Arrow;
     public Slider MoveSlider;
-    public Text Value;
 
     private int _mult = RotateButton.Mult;
 
@@ -28,13 +27,13 @@ public class Slidewire : MonoBehaviour
         _prev = _cur;
         _cur = MoveSlider.value;
         var dif = _cur - _prev;
-        
 
-        if(_cur > _prev)
+
+        if (_cur > _prev)
         {
             transform.Rotate(new Vector3(0, 0, 1), dif * Speed);
         }
-        else if(_cur < _prev)
+        else if (_cur < _prev)
         {
             transform.Rotate(new Vector3(0, 0, 1), dif * Speed);
         }
