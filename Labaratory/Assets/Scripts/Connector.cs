@@ -7,8 +7,6 @@ public class Connector : MonoBehaviour
     public static string ConnectedPlace { get; set; }
     public static string ConnectorName { get; set; }
 
-    public Connector() => ConnectorName = name;
-
     private void OnCollisionStay(Collision collision)
     {
         var obj = collision.gameObject;

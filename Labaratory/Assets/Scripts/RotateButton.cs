@@ -25,7 +25,7 @@ public class RotateButton : MonoBehaviour
 
     void Start()
     {
-        Slider.value = 0.5f;
+        Slider.value = Slider.maxValue / 2;
     }
 
     void Update()

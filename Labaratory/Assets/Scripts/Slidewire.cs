@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Slidewire : MonoBehaviour
 {
-    public int Speed;
+    public int Step;
 
     public GameObject ArrowHold;
     public GameObject Arrow;
@@ -28,16 +28,7 @@ public class Slidewire : MonoBehaviour
         _cur = MoveSlider.value;
         var dif = _cur - _prev;
 
-
-        if (_cur > _prev)
-        {
-            transform.Rotate(new Vector3(0, 0, 1), dif * Speed);
-        }
-        else if (_cur < _prev)
-        {
-            transform.Rotate(new Vector3(0, 0, 1), dif * Speed);
-        }
-
-        Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0), dif * Speed);
+        transform.Rotate(new Vector3(0, 0, 1), dif * Step);
+        Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0), dif * Step);
     }
 }
