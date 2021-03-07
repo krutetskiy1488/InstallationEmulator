@@ -1,32 +1,51 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Connector : MonoBehaviour
 {
-    public static string ConnectedPlace { get; set; }
-    public static string ConnectorName { get; set; }
+    public int Type { get; set; }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        var obj = collision.gameObject;
+        GetComponent<Renderer>().material.color = Color.green;
+
+        switch (obj.name)
+        {
+            case "Red":
+            {
+                Type = 1; break;
+            }
+            case "Brown":
+            {
+                Type = 2; break;
+            }
+            case "Blue":
+            {
+                Type = 3; break;
+            }
+        }
+
+        print(Type);
+    }
 
     private void OnCollisionStay(Collision collision)
     {
         var obj = collision.gameObject;
-        if (obj.tag != "ConnectPoint")
-            return;
 
-        ConnectedPlace = obj.name;
-
-        obj.GetComponent<Renderer>().material.color = Color.green;
-        transform.position = obj.transform.GetChild(0).position;
+        obj.transform.position = transform.GetChild(0).position;
     }
 
     private void OnCollisionExit(Collision collision)
     {
         var obj = collision.gameObject;
-        if (obj.tag != "ConnectPoint")
-            return;
 
-        ConnectedPlace = null;
+        Type = 0;
+        print(Type);
 
-        obj.GetComponent<Renderer>().material.color = Color.red;
+        GetComponent<Renderer>().material.color = Color.red;
     }
 }

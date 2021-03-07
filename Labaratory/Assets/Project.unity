@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 406468423}
   - component: {fileID: 406468422}
   - component: {fileID: 406468427}
+  - component: {fileID: 406468426}
   m_Layer: 0
   m_Name: Point (3)
   m_TagString: ConnectPoint
@@ -368,6 +369,18 @@ Transform:
   m_Father: {fileID: 466103738}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &406468426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406468421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5f99b24809d304faf20a97b3f709b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &406468427
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -840,7 +853,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d06cef0b11022e14d82b83ab93725a36,
         type: 3}
       propertyPath: m_Name
-      value: BlueConnector
+      value: Brown
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d06cef0b11022e14d82b83ab93725a36,
         type: 3}
@@ -868,6 +881,7 @@ GameObject:
   - component: {fileID: 640052842}
   - component: {fileID: 640052841}
   - component: {fileID: 640052840}
+  - component: {fileID: 640052844}
   m_Layer: 0
   m_Name: Point (2)
   m_TagString: ConnectPoint
@@ -966,6 +980,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 640052838}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &640052844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640052838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5f99b24809d304faf20a97b3f709b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &656525256
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1324,18 +1350,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &861335273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 861335266}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5f99b24809d304faf20a97b3f709b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1035528222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1587,7 @@ GameObject:
   - component: {fileID: 1188685206}
   - component: {fileID: 1188685205}
   - component: {fileID: 1188685204}
+  - component: {fileID: 1188685208}
   m_Layer: 0
   m_Name: Point (1)
   m_TagString: ConnectPoint
@@ -1671,6 +1686,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188685202}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1188685208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1188685202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a5f99b24809d304faf20a97b3f709b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1241029625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1815,7 +1842,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d06cef0b11022e14d82b83ab93725a36,
         type: 3}
       propertyPath: m_Name
-      value: BrownConnector
+      value: Red
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d06cef0b11022e14d82b83ab93725a36,
         type: 3}
@@ -1836,18 +1863,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1245942035}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1245942038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245942037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5f99b24809d304faf20a97b3f709b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1245942039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2525,7 +2540,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d06cef0b11022e14d82b83ab93725a36,
         type: 3}
       propertyPath: m_Name
-      value: RedConnector
+      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d06cef0b11022e14d82b83ab93725a36,
         type: 3}
@@ -2546,18 +2561,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1954122711}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1954122714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954122713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5f99b24809d304faf20a97b3f709b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1954122715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2694,6 +2697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d12dcdfa2e797049ac93ad8ca113874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Connectors: []
 --- !u!4 &2039785451
 Transform:
   m_ObjectHideFlags: 0
