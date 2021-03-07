@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class Connector : MonoBehaviour
 {
+    public static string ConnectedPlace { get; set; }
+    public static string ConnectorName { get; set; }
+
+    public Connector() => ConnectorName = name;
+
     private void OnCollisionStay(Collision collision)
     {
         var obj = collision.gameObject;
+        if (obj.tag != "ConnectPoint")
+            return;
+
+        ConnectedPlace = obj.name;
 
         obj.GetComponent<Renderer>().material.color = Color.green;
         transform.position = obj.transform.GetChild(0).position;
@@ -15,6 +24,10 @@ public class Connector : MonoBehaviour
     private void OnCollisionExit(Collision collision)
     {
         var obj = collision.gameObject;
+        if (obj.tag != "ConnectPoint")
+            return;
+
+        ConnectedPlace = null;
 
         obj.GetComponent<Renderer>().material.color = Color.red;
     }
