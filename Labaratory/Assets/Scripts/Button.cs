@@ -6,7 +6,7 @@ public class Button : MonoBehaviour
     public Text Mode;
 
     private int _click = 0;
-    public enum State
+    public enum EState
     {
         Able = 0,
         Unable = 1
@@ -16,25 +16,25 @@ public class Button : MonoBehaviour
     public float Up = 1.55f;
     public float Bottom = 1.4f;
 
-    public State EState = State.Unable;
+    public EState State = EState.Unable;
 
     void Update()
     {
-        if (EState == State.Unable)
+        if (State == EState.Unable)
             return;
 
         var dir = (_click % 2 == 0) ? 1 : -1;
         transform.Translate(dir * Vector3.forward * Time.deltaTime * Speed);
 
         if (transform.position.y <= Bottom || transform.position.y >= Up)
-            EState = State.Unable;
+            State = EState.Unable;
     }
 
     void OnMouseDown()
     {
-        EState = State.Able;
+        State = EState.Able;
         _click++;
 
-        Mode.text = EState == State.Able ? "ON" : "OFF";
+        Mode.text = Mode.text == "ON"? "OFF" : "ON";
     }
 }

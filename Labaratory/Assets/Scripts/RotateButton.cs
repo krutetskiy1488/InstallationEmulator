@@ -31,9 +31,7 @@ public class RotateButton : MonoBehaviour
     {
 
         if (_rotate)
-        {
             transform.RotateAround(transform.position, new Vector3(0, 1, 0), Time.deltaTime * Speed);
-        }
 
         if (transform.eulerAngles.y <= _steps[(_inx + 1)% _steps.Count].angle + 1f && transform.eulerAngles.y >= _steps[(_inx + 1) % _steps.Count].angle - 1f)
         {

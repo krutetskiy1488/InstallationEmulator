@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 454559330}
   - component: {fileID: 454559329}
   m_Layer: 5
-  m_Name: OnOff
+  m_Name: Mode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1084,10 +1084,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705d4ee05510a164999ad7c2e8a570b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnOff: {fileID: 454559329}
+  Mode: {fileID: 454559329}
   Speed: 0.8
   Up: 5.055
   Bottom: 5.001
+  State: 1
 --- !u!65 &663150361
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1572,7 +1573,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Slider: {fileID: 1389395141}
-  Value: {fileID: 1785449387}
   Status: {fileID: 172815958}
   Speed: 100
 --- !u!1 &1188685202
@@ -2698,7 +2698,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d12dcdfa2e797049ac93ad8ca113874, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Connectors: []
+  Value: {fileID: 1785449387}
+  Slider: {fileID: 1389395141}
 --- !u!4 &2039785451
 Transform:
   m_ObjectHideFlags: 0
