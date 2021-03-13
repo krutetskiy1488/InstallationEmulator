@@ -2625,7 +2625,7 @@ MonoBehaviour:
   Step: 17
   ArrowHold: {fileID: 1720648596}
   Arrow: {fileID: 1411510811}
-  MoveSlider: {fileID: 1389395141}
+  Slider: {fileID: 1389395141}
 --- !u!65 &1956939711
 BoxCollider:
   m_ObjectHideFlags: 0

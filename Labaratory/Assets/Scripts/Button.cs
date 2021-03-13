@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Button : MonoBehaviour
@@ -17,6 +18,11 @@ public class Button : MonoBehaviour
     public float Bottom = 1.4f;
 
     public EState State = EState.Unable;
+
+    void Start()
+    {
+        Mode.text = "OFF";
+    } 
 
     void Update()
     {
