@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class RotateButton : MonoBehaviour
 {
     public Slider Slider;
-    public Text Value;
     public Text Status;
     public float Speed = 1.0f;
 
@@ -43,7 +42,6 @@ public class RotateButton : MonoBehaviour
         }
 
         SetStatus();
-        SetValue();
 
         Mult = _steps[_inx % _steps.Count].mult;
     }
@@ -81,12 +79,6 @@ public class RotateButton : MonoBehaviour
         }
 
         Status.text = text;
-    }
-
-    void SetValue()
-    {
-        var t = _steps[_inx % _steps.Count].mult;
-        Value.text = $"{Slider.value * t:N}";
     }
 
     void OnMouseDown()

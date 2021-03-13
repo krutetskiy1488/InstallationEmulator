@@ -11,19 +11,24 @@ public class Slidewire : MonoBehaviour
     public GameObject Arrow;
     public Slider MoveSlider;
 
-    private int _mult = RotateButton.Mult;
+    private Button _button;
 
     private float _cur;
     private float _prev;
 
     void Start()
     {
+        _button = FindObjectOfType<Button>();
+
         _prev = MoveSlider.value;
         _cur = _prev;
     }
 
     void Update()
     {
+        if(_button.OnOff.text == "OFF")
+            return;
+
         _prev = _cur;
         _cur = MoveSlider.value;
         var dif = _cur - _prev;

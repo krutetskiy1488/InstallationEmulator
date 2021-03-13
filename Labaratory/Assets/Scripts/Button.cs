@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Button : MonoBehaviour
 {
-    public static Text OnOff;
+    public Text OnOff;
 
     private enum State
     {
