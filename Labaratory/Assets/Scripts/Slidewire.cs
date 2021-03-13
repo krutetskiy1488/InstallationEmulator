@@ -26,7 +26,7 @@ public class Slidewire : MonoBehaviour
 
     void Update()
     {
-        if(_button.OnOff.text == "OFF")
+        if(_button.Mode.text == "OFF")
             return;
 
         _prev = _cur;

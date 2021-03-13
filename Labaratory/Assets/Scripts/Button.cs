@@ -1,56 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Button : MonoBehaviour
 {
-    public Text OnOff;
+    public Text Mode;
 
-    private enum State
+    private int _click = 0;
+    public enum State
     {
-        Down = 0,
-        Up = 1,
-        Unable
+        Able = 0,
+        Unable = 1
     }
 
     public float Speed = 0.8f;
     public float Up = 1.55f;
     public float Bottom = 1.4f;
 
-    private State _state = State.Unable;
+    public State EState = State.Unable;
 
     void Update()
     {
-        switch (_state)
-        {
-            case State.Down:
-            {
-                transform.Translate(Vector3.back * Time.deltaTime * Speed);
-                break;
-            }
-            case State.Up:
-            {
-                transform.Translate(Vector3.forward * Time.deltaTime * Speed);
-                break;
-            }
-            case State.Unable:
-            {
-                break;
-            }
-        }
+        if (EState == State.Unable)
+            return;
 
-        if (transform.position.y <= Bottom)
-            _state = State.Up;
-        else if (transform.position.y >= Up)
-            _state = State.Unable;
+        var dir = (_click % 2 == 0) ? 1 : -1;
+        transform.Translate(dir * Vector3.forward * Time.deltaTime * Speed);
+
+        if (transform.position.y <= Bottom || transform.position.y >= Up)
+            EState = State.Unable;
     }
 
     void OnMouseDown()
     {
-        if(_state != State.Up)
-            _state = State.Down;
+        EState = State.Able;
+        _click++;
 
-        OnOff.text = (OnOff.text == "ON") ? "OFF" : "ON";
+        Mode.text = EState == State.Able ? "ON" : "OFF";
     }
 }
