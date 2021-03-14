@@ -7,14 +7,19 @@ using UnityEngine.UI;
 
 public static class Configuration
 {
+    private static readonly System.Random _rd = new System.Random();
+
     private static List<(int, int, int)> _configurations = new List<(int, int, int)>
     {
         (1, 2, 3)
     };
 
-    public static int GetValue(int[] config)
+    public static float GetValue(int[] config)
     {
-        return 1;
+        if (!config.All(c => c > 0))
+            return -1;
+        
+        return (float) (_rd.Next(0, 9) + _rd.NextDouble());
     }
 }
 
@@ -25,11 +30,16 @@ public class LogicScript : MonoBehaviour
 
     private List<Connector> _connectors;
     private int[] _config;
+    private int[] _compar;
 
     void Start()
     {
         _connectors = FindObjectsOfType<Connector>().ToList();
         _config = new int[_connectors.Count];
+        _compar = new int[]
+        {
+            0, 0, 0
+        };
     }
 
     void Update()
@@ -43,7 +53,21 @@ public class LogicScript : MonoBehaviour
 
     void SetValue()
     {
-        var value = Configuration.GetValue(_config);
+        float value = Slider.value;
+
+        if (!_compar.SequenceEqual(_config))
+        {
+            var update = Configuration.GetValue(_config);
+            if (update > 0)
+            {
+                value = update;
+                Slider.value = update;
+            }
+
+            _compar[0] = _connectors[0].Type;
+            _compar[1] = _connectors[1].Type;
+            _compar[2] = _connectors[2].Type;
+        }
 
         Value.text = $"{value:N}";
     }

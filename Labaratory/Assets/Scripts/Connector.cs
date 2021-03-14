@@ -28,8 +28,6 @@ public class Connector : MonoBehaviour
                 Type = 3; break;
             }
         }
-
-        print(Type);
     }
 
     private void OnCollisionStay(Collision collision)
@@ -44,7 +42,6 @@ public class Connector : MonoBehaviour
         var obj = collision.gameObject;
 
         Type = 0;
-        print(Type);
 
         GetComponent<Renderer>().material.color = Color.red;
     }

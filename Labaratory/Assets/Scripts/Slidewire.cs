@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,10 +19,15 @@ public class Slidewire : MonoBehaviour
 
     void Start()
     {
+        var rd = new System.Random();
+
         _button = FindObjectOfType<Button>();
 
         _prev = Slider.value;
         _cur = _prev;
+
+        //float dif = _prev - rd.Next(0, 9) + (float)rd.NextDouble();
+        //Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0), dif * Step);
     }
 
     void Update()
