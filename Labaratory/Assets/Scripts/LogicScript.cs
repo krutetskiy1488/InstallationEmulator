@@ -29,12 +29,15 @@ public class LogicScript : MonoBehaviour
     public Slider Slider; 
 
     private List<Connector> _connectors;
+    private Slidewire _slidewire;
+
     private int[] _config;
     private int[] _compar;
 
     void Start()
     {
         _connectors = FindObjectsOfType<Connector>().ToList();
+        _slidewire = FindObjectOfType<Slidewire>();
         _config = new int[_connectors.Count];
         _compar = new int[]
         {
@@ -61,7 +64,16 @@ public class LogicScript : MonoBehaviour
             if (update > 0)
             {
                 value = update;
-                Slider.value = update;
+                if (update > Slider.maxValue / 2)
+                {
+                    Slider.maxValue += update - Slider.maxValue / 2 + 1;
+                }
+                else if (update < Slider.maxValue / 2)
+                {
+                    Slider.minValue += update - Slider.maxValue / 2 - 1;
+                }
+
+                _slidewire.UpdateArrow(update);
             }
 
             _compar[0] = _connectors[0].Type;
@@ -69,6 +81,16 @@ public class LogicScript : MonoBehaviour
             _compar[2] = _connectors[2].Type;
         }
 
-        Value.text = $"{value:N}";
+        Value.text = $"{GetValidValue(value):N}";
+    }
+
+    float GetValidValue(float value)
+    {
+        if (value > 10f)
+            return 10f;
+        else if (value < 0f)
+            return 0f;
+        else
+            return value;
     }
 }
