@@ -42,8 +42,9 @@ public class Slidewire : MonoBehaviour
 
         transform.Rotate(new Vector3(0, 0, 1), dif * Step);
 
-        //if (Arrow.transform.rotation.y >= 0.477f && dif > 0 || Arrow.transform.rotation.y <= -0.477f && dif < 0)
-            //return;
+        var ay = Arrow.transform.rotation.y;
+        if (ay >= 0.477f && dif > 0 || ay <= -0.477f && dif < 0)
+            return;
 
         Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0), dif * Step);
     }
@@ -56,8 +57,8 @@ public class Slidewire : MonoBehaviour
 
     public float GetDifference()
     {
-        var offset = Slider.value - _center;
-        var pow = 1f;
+        var offset = Slider.value - 5f;
+        var pow = 3f;
         _prev = _cur;
 
         if (offset <= 0)

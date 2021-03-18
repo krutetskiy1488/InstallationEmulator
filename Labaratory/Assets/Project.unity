@@ -1148,7 +1148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ead8f7f384a09844493fea691efc79a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Step: 50
+  Step: 7
   ArrowHold: {fileID: 1507397393}
   Arrow: {fileID: 1403652844}
   Slider: {fileID: 1389395141}
@@ -1419,7 +1419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -222.1, y: 16.848}
+  m_AnchoredPosition: {x: -209, y: 16.848}
   m_SizeDelta: {x: 71.85831, y: 33.69551}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1063850375

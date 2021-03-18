@@ -14,10 +14,11 @@ public class RotateButton : MonoBehaviour
     private int _inx = 0;
     private List<(float angle, int mult)> _steps = new List<(float angle, int mult)>()
     {
-        (0,  1),
-        (50, 1),
-        (90, 5),
-        (120, 10)
+        (340,  1),
+        (21, 1),
+        (60, 5),
+        (110, 20),
+        (130, 100)
     };
 
     public static int Mult = 1;
@@ -33,7 +34,9 @@ public class RotateButton : MonoBehaviour
         if (_rotate)
             transform.RotateAround(transform.position, new Vector3(0, 1, 0), Time.deltaTime * Speed);
 
-        if (transform.eulerAngles.y <= _steps[(_inx + 1)% _steps.Count].angle + 1f && transform.eulerAngles.y >= _steps[(_inx + 1) % _steps.Count].angle - 1f)
+        var y = transform.eulerAngles.y;
+        print(y);
+        if (y <= _steps[(_inx + 1)% _steps.Count].angle + 1f && y >= _steps[(_inx + 1) % _steps.Count].angle - 1f)
         {
             _rotate = false;
             _inx++;
@@ -51,7 +54,7 @@ public class RotateButton : MonoBehaviour
         {
             case 0:
             {
-                text = "КАЛИБРОВКА";
+                text = "КОНТРОЛЬ 5";
                 break;
             }
             case 1:
@@ -66,7 +69,12 @@ public class RotateButton : MonoBehaviour
             }
             case 3:
             {
-                text = "10X";
+                text = "20X";
+                break;
+            }
+            case 4:
+            {
+                text = "100X";
                 break;
             }
             default:
