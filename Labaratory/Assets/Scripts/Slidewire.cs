@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Slidewire : MonoBehaviour
 {
-    public int Step;
+    public float Step;
 
     public GameObject ArrowHold;
     public GameObject Arrow;
@@ -16,6 +16,7 @@ public class Slidewire : MonoBehaviour
 
     private float _cur;
     private float _prev;
+    private float _center = 5f;
 
     void Start()
     {
@@ -23,14 +24,12 @@ public class Slidewire : MonoBehaviour
 
         _button = FindObjectOfType<Button>();
 
-        _prev = Slider.value;
-        _cur = _prev;
+        //_prev = Slider.value;
+        //_cur = _prev;
     }
 
     void Update()
     {
-        
-
         if(_button.Mode.text == "OFF")
         {
             Slider.enabled = false;
@@ -39,20 +38,33 @@ public class Slidewire : MonoBehaviour
         else
             Slider.enabled = true;
 
-        _prev = _cur;
-        _cur = Slider.value;
-        var dif = _cur - _prev;
+        var dif = GetDifference();
 
         transform.Rotate(new Vector3(0, 0, 1), dif * Step);
 
-        if (Arrow.transform.rotation.y >= 0.477f && dif > 0 || Arrow.transform.rotation.y <= -0.477f && dif < 0)
-            return;
+        //if (Arrow.transform.rotation.y >= 0.477f && dif > 0 || Arrow.transform.rotation.y <= -0.477f && dif < 0)
+            //return;
 
         Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0), dif * Step);
     }
 
-    public void UpdateArrow(float update)
+    public void UpdateArrow(float center)
     {
-        Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0), (_cur - update) * Step);
+        Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0), (_cur - center) * Step);
+        _center = center;
+    }
+
+    public float GetDifference()
+    {
+        var offset = Slider.value - _center;
+        var pow = 1f;
+        _prev = _cur;
+
+        if (offset <= 0)
+            _cur = - 0.1f * Mathf.Pow(-offset, pow);
+        else
+            _cur = 0.1f * Mathf.Pow(offset, pow);
+
+        return _cur - _prev;
     }
 }
