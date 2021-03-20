@@ -27,5 +27,17 @@ namespace AssemblyCSharp.Assets.Scripts
             "по контуру", "по контуру", "в ряд", "в ряд", "по контуру", "по контуру", "в ряд", "в ряд", "по контуру",
             "по контуру", "по контуру"
         };
+
+        //Длина заземлителя 
+        public static float[] GroundConnectionLength = { 4.8f, 4f, 5f, 7.2f, 5.4f, 5.6f, 5.8f, 6f, 5.2f, 5.6f, 5f };
+
+        //Глубина заложения
+        public static float[] DepthLaying = { 80, 100, 75, 70, 65, 60, 55, 50, 100, 70, 90 };
+
+        //Расстояние между заземлителями
+        public static float[] DistanceBetweenEarthing = { 480, 400, 500, 520, 520, 540, 560, 580, 600, 400, 500 };
+
+        //Ширина полосы
+        public static float[] BandWidth = { 4, 4, 5, 5, 5, 6, 6, 6, 4, 5, 4 };
     }
 }
