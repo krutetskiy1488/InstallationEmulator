@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,24 +14,37 @@ public class Slidewire : MonoBehaviour
     public Slider Slider;
 
     private Button _button;
+    private RotateButton _rotateButton;
 
+    private float _start = -72f;
     private float _cur;
     private float _prev;
     private float _center = 5f;
+    private int _coff;
 
     void Start()
     {
         var rd = new System.Random();
 
         _button = FindObjectOfType<Button>();
+        _rotateButton = FindObjectOfType<RotateButton>();
 
-        //_prev = Slider.value;
-        //_cur = _prev;
+        //Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0), _start);
+
+        Slider.onValueChanged.AddListener(delegate { ValueChanged();});
+    }
+
+    public void ValueChanged()
+    {
+        var dif = Slider.value - _center;
+        ClearArrow();
+        Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0),
+            Math.Min(Math.Max(dif * 18 / _coff, -72), 72));
     }
 
     void Update()
     {
-        if(_button.Mode.text == "OFF")
+        if (_button.Mode.text == "OFF")
         {
             Slider.enabled = false;
             return;
@@ -38,34 +52,28 @@ public class Slidewire : MonoBehaviour
         else
             Slider.enabled = true;
 
-        var dif = GetDifference();
-
-        transform.Rotate(new Vector3(0, 0, 1), dif * Step);
-
-        var ay = Arrow.transform.rotation.y;
-        if (ay >= 0.477f && dif > 0 || ay <= -0.477f && dif < 0)
-            return;
-
-        Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0), dif * Step);
+        _coff = _rotateButton.Mult;
     }
 
     public void UpdateArrow(float center)
     {
-        Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0), (_cur - center) * Step);
         _center = center;
+        var dif = Slider.value - center;
+        Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0), Math.Min(Math.Max(dif * 18, 0), 144));
     }
 
-    public float GetDifference()
+    public void ArrowToLeft()
     {
-        var offset = Slider.value - 5f;
-        var pow = 3f;
-        _prev = _cur;
+        var center = 5 * _coff;
+        var dif = Slider.value - center;
+        ClearArrow();
+        Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0), Math.Min(Math.Max(dif * 18 , -72), 72));
 
-        if (offset <= 0)
-            _cur = - 0.1f * Mathf.Pow(-offset, pow);
-        else
-            _cur = 0.1f * Mathf.Pow(offset, pow);
+    }
 
-        return _cur - _prev;
+    public void ClearArrow()
+    {
+        var v = Arrow.transform.rotation;
+        Arrow.transform.RotateAround(ArrowHold.transform.position, new Vector3(0, 1, 0), -v.eulerAngles.y);
     }
 }

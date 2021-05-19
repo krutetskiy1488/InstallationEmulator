@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class RotateButton : MonoBehaviour
 {
-    public Slider Slider;
-    public Text Status;
     public float Speed = 1.0f;
 
     private bool _rotate = false;
@@ -21,74 +20,42 @@ public class RotateButton : MonoBehaviour
         (130, 100)
     };
 
-    public static int Mult = 1;
+    public Slider Slider;
+
+    private Slidewire _slidewire;
+    private LogicScript _logic;
+
+    public int Mult = 1;
 
     void Start()
     {
-        Slider.value = Slider.maxValue / 2;
+        _slidewire = FindObjectOfType<Slidewire>();
+        _logic = FindObjectOfType<LogicScript>();
     }
 
-    void Update()
+    public void Update()
     {
 
         if (_rotate)
             transform.RotateAround(transform.position, new Vector3(0, 1, 0), Time.deltaTime * Speed);
 
         var y = transform.eulerAngles.y;
-        print(y);
-        if (y <= _steps[(_inx + 1)% _steps.Count].angle + 1f && y >= _steps[(_inx + 1) % _steps.Count].angle - 1f)
+
+        if (y <= _steps[(_inx + 1) % _steps.Count].angle + 1f && y >= _steps[(_inx + 1) % _steps.Count].angle - 1f)
         {
             _rotate = false;
             _inx++;
         }
 
-        SetStatus();
-
-        Mult = _steps[_inx % _steps.Count].mult;
-    }
-
-    void SetStatus()
-    {
-        string text;
-        switch (_inx % _steps.Count)
+        if (Mult != _steps[_inx % _steps.Count].mult)
         {
-            case 0:
-            {
-                text = "КОНТРОЛЬ 5";
-                break;
-            }
-            case 1:
-            {
-                text = "1X";
-                break;
-            }
-            case 2:
-            {
-                text = "5X";
-                break;
-            }
-            case 3:
-            {
-                text = "20X";
-                break;
-            }
-            case 4:
-            {
-                text = "100X";
-                break;
-            }
-            default:
-            {
-                text = "ERROR";
-                break;
-            }
+            Mult = _steps[_inx % _steps.Count].mult;
+            Slider.value = (_logic.ValueF * Slider.maxValue) / (Slider.value / Mult);
         }
-
-        Status.text = text;
     }
 
     void OnMouseDown()
-    { 
+    {
         _rotate = true;
     }
 }
